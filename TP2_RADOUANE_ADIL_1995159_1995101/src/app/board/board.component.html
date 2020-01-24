@@ -1,0 +1,19 @@
+<h3 *ngIf="!gameOver">Tour de : {{ currentPlayer.name }}</h3>
+<h3 *ngIf="gameOver && lastWinner == PLAYER_HUMAN">Vous avez gagner</h3>
+<h3 *ngIf="gameOver && lastWinner == PLAYER_COMPUTER">Ordinateur gagne</h3>
+<h3 *ngIf="gameOver && lastWinner == DRAW">Match null</h3>
+
+<div id="board" [class.locked]="boardLocked || gameOver">
+  <div *ngFor="let square of board" class="square" [class.checked]="square.value != ''" [class.winner]="square.winner"
+    (click)="square_click(this.square)">
+    {{ square.value }}
+  </div>
+</div>
+
+<div id="score">
+  <span class="badge badge-pill badge-primary">Votre scor : {{ scoreHuman }}</span>
+  <span class="badge badge-pill badge-secondary">Match Null : {{ scoreDraw }}</span>
+  <span class="badge badge-pill badge-danger">Score Ordi : {{ scoreComp }}</span>
+</div>
+
+<input type="button" class="btn btn-outline-success" value="REJOUER" *ngIf="gameOver" (click)="newGame()" />

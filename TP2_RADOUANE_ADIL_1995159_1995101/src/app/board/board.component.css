@@ -1,0 +1,53 @@
+#board {
+    width: 302px;
+    margin: 0 auto;
+    border: none;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    font-size: 50px;
+    background-color: rgb(58, 100, 74);
+    grid-gap: 1px;
+    margin-top: 40px;
+}
+
+#board.locked {
+    opacity: .7;
+    pointer-events: none;
+}
+
+#board .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#board .square.checked {
+    cursor: default;
+}
+
+#board .square.winner {
+    background-color: greenyellow;
+    animation-name: win;
+    animation-duration: 1s;
+}
+
+input[type=button] {
+    margin-top: 20px;
+}
+
+.btn-outline-success :hover{
+    color:#fff;
+    background-color:greenyellow;
+    border-color:greenyellow;
+}
+
+#score{
+    margin-top: 40px
+    }
+@keyframes win {
+    0%   {background-color: rgb(175, 248, 66); transform: scale(1.0);}
+    50%  {background-color: rgb(203, 245, 140); transform: scale(1.1);}
+  }
